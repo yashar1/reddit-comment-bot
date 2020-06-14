@@ -32,7 +32,7 @@ Set the subreddit to search (default = "r/test"):
 ```python
 r.subreddit('test')
 ```
-Comment search criteria (default = "sample user content"):
+Comment search criteria (default = "sample user comment"):
 ```python
 if "sample user comment"
 ```
