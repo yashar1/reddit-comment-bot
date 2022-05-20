@@ -3,6 +3,11 @@ import time
 import os
 import config
 import requests
+import random
+
+r1 = random.randint(1,5)
+
+url = 'https://flaskimage.greengrass-7367efcf.eastus.azurecontainerapps.io/quotes'
 
 def bot_login():
 	print ("Logging in...")
@@ -17,12 +22,11 @@ def bot_login():
 
 def run_bot(r,comm_r):
     print("Getting 10 new comments!!!\n")
-    url="https://auapimdev.azure-api.net/seinquote"
     for comment in r.subreddit('test').comments(limit=1000):
-        if "joke" in comment.body and comment.id not in comment_R and not comment.author==r.user.me():
-            joke=requests.get(url).json()['quote']['joke']
-            print(f'Joke is in comment in ID: {comment.id}')
-            comment.reply(f"Chuck Norris Joke for you:{joke}\"[click here](http://api.icndb.com/jokes/random) \"to find more")
+        if "!jerkstore" in comment.body and comment.id not in comment_R and not comment.author==r.user.me():
+            joke=requests.get(url).json()[f'''{r1}''']['name']
+            print(f'!Jerkstore is in comment in ID: {comment.id}')
+            comment.reply({joke})
             print(f'Replied to comment with ID: {comment.id}\n')
             comment_R.append(comment.id)
             with open("comments_R.txt", "a") as f:
